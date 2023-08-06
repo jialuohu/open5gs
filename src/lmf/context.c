@@ -4,3 +4,10 @@
  * For instance, you might have functions to create and manage data structures that hold device location information.
 */
 
+#include "context.h"
+#include <stdio.h>
+
+int main(){
+    printf("testing\n");
+    return 0;
+}
