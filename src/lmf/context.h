@@ -1,6 +1,34 @@
 #ifndef LMF_CONTEXT_H
 #define LMF_CONTEXT_H
 
+// TODO Check included .h files.
+#include "ogs-app.h"
+#include "ogs-sbi.h"
+
+#include "lmf-sm.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern int __lmf_log_domain;
+
+#undef OGS_LOG_DOMAIN
+#define OGS_LOG_DOMAIN __lmf_log_domain
+
+// ! Not sure if I should implement lmf_context_t like other modules
+// ! What is the usage of it?
+typedef struct lmf_context_s {
+    /*
+    ogs_list_t      udm_ue_list;
+    ogs_hash_t      *suci_hash;
+    ogs_hash_t      *supi_hash;
+    */
+} lmf_context_t;
+
+// Temporary array size given
+#define THE_MAXIMUM_SIZE_OF_N                               100
+
 // Common Definitions
 #define number                                              float
 #define integer                                             int
@@ -8,7 +36,6 @@
 #define string                                              char*
 
 
-// Other typedefs
 typedef string                                              lmf_correlation_id_t;
 typedef string                                              supi_t;
 typedef string                                              pei_t;
@@ -30,46 +57,50 @@ typedef number                                              speed_uncertainty_t;
 typedef integer                                             age_of_location_estimate_t;
 
 
-typedef enum lmf_response_time_e                            lmf_response_time_t;
-typedef enum lmf_lcs_priority_e                             lmf_lcs_priority_t;
-typedef enum lmf_velocity_requested_e                       lmf_velocity_requested_t;
-typedef enum lmf_external_client_type_e                     lmf_external_client_type_t;
-typedef enum lmf_supported_gad_shapes_e                     lmf_supported_gad_shapes_t;
-typedef enum lmf_accuracy_fulfilment_indicator_e            lmf_accuracy_fulfilment_indicator_t;
-typedef enum lmf_vertical_direction_e                       lmf_vertical_direction_t;
-typedef enum lmf_positioning_method_e                       lmf_positioning_method_t;
-typedef enum lmf_positioning_mode_e                         lmf_positioning_mode_t;
-typedef enum lmf_usage_e                                    lmf_usage_t;
-typedef enum lmf_gnss_id_e                                  lmf_gnss_id_t;
+// * enum member index starts at 0
+#define LMF_ENUM_START(name)                                typedef enum name##_e { name##_NULL = 0,
+#define LMF_ENUM_END(name)                                  } name##_t;
+#define LMF_ENUM_FORWARD_DECLARATION(name)                  typedef enum name##_e name##_t;
+#define LMF_STRUCT_FORWARD_DECLARATION(name)                typedef struct name##_s name##_t;
+
+// * enum forward declaration
+LMF_ENUM_FORWARD_DECLARATION(lmf_response_time)
+LMF_ENUM_FORWARD_DECLARATION(lmf_lcs_priority)
+LMF_ENUM_FORWARD_DECLARATION(lmf_velocity_requested)
+LMF_ENUM_FORWARD_DECLARATION(lmf_external_client_type)
+LMF_ENUM_FORWARD_DECLARATION(lmf_supported_gad_shapes)
+LMF_ENUM_FORWARD_DECLARATION(lmf_accuracy_fulfilment_indicator)
+LMF_ENUM_FORWARD_DECLARATION(lmf_vertical_direction)
+LMF_ENUM_FORWARD_DECLARATION(lmf_positioning_method)
+LMF_ENUM_FORWARD_DECLARATION(lmf_positioning_mode)
+LMF_ENUM_FORWARD_DECLARATION(lmf_usage)
+LMF_ENUM_FORWARD_DECLARATION(lmf_gnss_id)
+
+// * struct forward_declaration
+LMF_STRUCT_FORWARD_DECLARATION(lmf_location_qos)
+LMF_STRUCT_FORWARD_DECLARATION(ecgi)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_plmn_id)
+LMF_STRUCT_FORWARD_DECLARATION(ncgi)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_geographical_coordinates)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_point)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_uncertainty_ellipse)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_point_uncertainty_ellipse)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_point_uncertainty_circle)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_polygon)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_point_altitude)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_point_altitude_uncertainty)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_ellipsoid_arc)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_geographic_area)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_velocity)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_velocity_estimate)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_velocity_with_uncertainty)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_with_vertical_velocity_and_uncertainty)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_civic_address)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_positioning_method_and_usage)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_gnss_positioning_method_and_usage)
 
 
-typedef struct lmf_location_qos_s                           lmf_location_qos_t;
-typedef struct ecgi_s                                       ecgi_t;
-typedef struct lmf_plmn_id_s                                lmf_plmn_id_t;
-typedef struct ncgi_s                                       ncgi_t;
-typedef struct lmf_geographical_coordinates_s               lmf_geographical_coordinates_t;
-typedef struct lmf_point_s                                  lmf_point_t;
-typedef struct lmf_uncertainty_ellipse_s                    lmf_uncertainty_ellipse_t;
-typedef struct lmf_point_uncertainty_ellipse_s              lmf_point_uncertainty_ellipse_t;
-typedef struct lmf_point_uncertainty_circle_s               lmf_point_uncertainty_circle_t;
-typedef struct lmf_polygon_s                                lmf_polygon_t;
-typedef struct lmf_point_altitude_s                         lmf_point_altitude_t;
-typedef struct lmf_point_altitude_uncertainty_s             lmf_point_altitude_uncertainty_t;
-typedef struct lmf_ellipsoid_arc_s                          lmf_ellipsoid_arc_t;
-typedef struct lmf_geographic_area_s                        lmf_geographic_area_t;
-typedef struct lmf_horizontal_velocity_s                    lmf_horizontal_velocity_t;
-typedef struct lmf_velocity_estimate_s                      lmf_velocity_estimate_t;
-typedef struct lmf_horizontal_velocity_with_uncertainty_s   lmf_horizontal_velocity_with_uncertainty_t;
-typedef struct 
-    lmf_horizontal_with_vertical_velocity_and_uncertainty_s
-    lmf_horizontal_with_vertical_velocity_and_uncertainty_t;
-typedef struct lmf_velocity_estimate_s                      lmf_velocity_estimate_t;
-typedef struct lmf_civic_address_s                          lmf_civic_address_t;
-typedef struct lmf_positioning_method_and_usage_s           lmf_positioning_method_and_usage_t;
-typedef struct lmf_gnss_positioning_method_and_usage_s      lmf_gnss_positioning_method_and_usage_t;
-
-
-
+// Contents of enum and struct
 typedef enum lmf_response_time_e{
     LOW_DELAY,
     DELAY_TOLERANT
@@ -86,7 +117,6 @@ typedef enum lmf_velocity_requested_e {
 } lmf_velocity_requested_t;
 
 typedef enum lmf_external_client_type_e { 
-    NULL = 0, 
     EMERGENCY_SERVICES, 
     VALUE_ADDED_SERVICES, 
     PLMN_OPERATOR_SERVICES, 
@@ -350,12 +380,24 @@ typedef struct lmf_determine_location_location_data_s {
     age_of_location_estimate_t age_of_location_estimate;
     lmf_velocity_estimate_t *velocity_estimate;
     lmf_civic_address_t *civic_address;
-    lmf_positioning_method_and_usage_t *positioning_data_list[100];                        // TODO confirm with the maxium
-    lmf_gnss_positioning_method_and_usage_t *gnss_positioning_data_list[100];              // TODO confirm with the maxium
+    lmf_positioning_method_and_usage_t *positioning_data_list[THE_MAXIMUM_SIZE_OF_N];                        
+    lmf_gnss_positioning_method_and_usage_t *gnss_positioning_data_list[THE_MAXIMUM_SIZE_OF_N];              
     ecgi_t ecgi;
     ncgi_t ncgi;
     altitude_t altitude;
 } lmf_determine_location_location_data_t;
 
 
+
+void lmf_context_init(void);
+void lmf_context_final(void);
+lmf_context_t *lmf_self(void);
+
+int lmf_context_parse_config(void);
+
+
+#ifdef __cplusplus
+}
 #endif
+
+#endif  /* LMF_CONTEXT_H */

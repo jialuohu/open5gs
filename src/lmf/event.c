@@ -1,8 +1,40 @@
-/**
- * This file implements functions related to handling events that occur during location management.
- * Events could include location requests, responses, errors, or other important occurrences that require specific actions by the LMF.
- * For example, you might have functions to process incoming location requests and generate appropriate responses.
-*/
+#include "event.h"
 
+lmf_event_t *lmf_event_new(int id)
+{
+    lmf_event_t *e = NULL;
 
+    e = ogs_event_size(id, sizeof(lmf_event_t));
+    ogs_assert(e);
 
+    e->h.id = id;
+
+    return e;
+}
+
+const char *lmf_event_get_name(lmf_event_t *e)
+{
+    if (e == NULL) {
+        return OGS_FSM_NAME_INIT_SIG;
+    }
+
+    switch (e->h.id) {
+    case OGS_FSM_ENTRY_SIG:
+        return OGS_FSM_NAME_ENTRY_SIG;
+    case OGS_FSM_EXIT_SIG:
+        return OGS_FSM_NAME_EXIT_SIG;
+
+    case OGS_EVENT_SBI_SERVER:
+        return OGS_EVENT_NAME_SBI_SERVER;
+    case OGS_EVENT_SBI_CLIENT:
+        return OGS_EVENT_NAME_SBI_CLIENT;
+    case OGS_EVENT_SBI_TIMER:
+        return OGS_EVENT_NAME_SBI_TIMER;
+
+    default:
+        break;
+    }
+
+    ogs_error("Unknown Event[%d]", e->h.id);
+    return "UNKNOWN_EVENT";
+}
