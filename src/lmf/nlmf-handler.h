@@ -8,7 +8,7 @@ extern "C" {
 #endif
 
 // TODO Confirm the information with handler functions
-bool lmf_nlmf_loc_handle_determine_location();
+bool lmf_nlmf_loc_handle_determine_location(ogs_sbi_stream_t *stream, ogs_sbi_message_t *recvmsg);
 
 
 

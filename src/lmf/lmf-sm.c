@@ -79,6 +79,7 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
             break;
         }
 
+        /* Current api version: v1 */
         if (strcmp(message.h.api.version, OGS_SBI_API_V1) != 0) {
             ogs_error("Not supported version [%s]", message.h.api.version);
             ogs_assert(true ==
@@ -89,11 +90,47 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
             break;
         }
 
-        SWITCH(message.h.service.name)
         // TODO Implement
+        SWITCH(message.h.service.name)
         CASE(OGS_SBI_SERVICE_NAME_NLMF_LOC)
+            /* Check if the uri is empty or not */
+            if (!message.h.resource.component[0]){
+                ogs_error("Not found[%s]", message.h.method);
+                ogs_assert(true == 
+                    ogs_sbi_server_send_error(stream,
+                        OGS_SBI_HTTP_STATUS_NOT_FOUND,
+                        &message, "Not found", message.h.method));
+                break;
+            }
 
-            break;
+            SWITCH(message.h.resource.component[0])
+            // ! #define OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION "determine-location"
+            CASE(OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION)
+                /* Check if the request is POST */
+                SWITCH(message.h.method)
+                CASE(OGS_SBI_HTTP_METHOD_POST)
+                    lmf_nlmf_loc_handle_determine_location(
+                        stream, &message);
+                    break;
+
+                DEFAULT
+                    ogs_error("Invalid HTTP method[%s]",
+                            message.h.method);
+                    ogs_assert(true == 
+                        ogs_sbi_server_send_error(stream,
+                            OGS_SBI_HTTP_STATUS_FORBIDDEN,
+                            &message, "Invalid HTTP method", message.h.method));
+                END
+                break;
+            DEFAULT
+                ogs_error("Invalid resource name [%s]",
+                        message.h.resource.component[0]);
+                ogs_assert(true ==
+                    ogs_sbi_server_send_error(stream,
+                        OGS_SBI_HTTP_STATUS_BAD_REQUEST,
+                        &message, "Unknown resource name",
+                        message.h.resource.component[0]));
+            END
 
         DEFAULT
             ogs_error("Invalid API name [%s]", message.h.service.name);
@@ -128,19 +165,9 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
             break;
         }
 
-        // TODO Implement
+        // ! Implement USER from here
         SWITCH(message.h.service.name)
-        CASE(OGS_SBI_SERVICE_NAME_NNRF_NFM)
-            SWITCH(message.h.resource.component[0])
-            CASE(OGS_SBI_RESOURCE_NAME_NF_INSTANCES)
-                nf_instance = e->h.sbi.data;
-                ogs_assert(nf_instance);
-                ogs_assert(OGS_FSM_STATE(&nf_instance->sm));
-
-                e->h.sbi.message = &message;
-                ogs_fsm_dispatch(&nf_instance->sm, e);
-                break;
-            END
+        // CASE(OGS_SBI_SERVICE_NAME_NNRF_NFM)
 
         DEFAULT
             ogs_error("Invalid API name [%s]", message.h.service.name);
