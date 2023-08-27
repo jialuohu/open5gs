@@ -1,3 +1,4 @@
+// ! FIXME
 #include "sbi-path.h"
 
 static lmf_context_t self;
@@ -40,7 +41,6 @@ static int lmf_context_validation(void)
     return OGS_OK;
 }
 
-// TODO Check if it is necessary to be modified
 int lmf_context_parse_config(void)
 {
     int rv;

@@ -104,11 +104,11 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
             }
 
             SWITCH(message.h.resource.component[0])
-            // ! #define OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION "determine-location"
             CASE(OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION)
                 /* Check if the request is POST */
                 SWITCH(message.h.method)
                 CASE(OGS_SBI_HTTP_METHOD_POST)
+                    /* Handler of determine_location */
                     lmf_nlmf_loc_handle_determine_location(
                         stream, &message);
                     break;
@@ -145,6 +145,7 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
         break;
 
     // ! CLIENT
+    // ? To Get request data from amf
     case OGS_EVENT_SBI_CLIENT:
         ogs_assert(e);
 
@@ -167,8 +168,21 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
 
         // ! Implement USER from here
         SWITCH(message.h.service.name)
-        // CASE(OGS_SBI_SERVICE_NAME_NNRF_NFM)
+        CASE(OGS_SBI_SERVICE_NAME_NNRF_NFM)
+            SWITCH(message.h.resource.component[0])
+            CASE(OGS_SBI_RESOURCE_NAME_NF_INSTANCES)
+                nf_instance = e->h.sbi.data;
+                ogs_assert(nf_instance);
+                ogs_assert(OGS_FSM_STATE(&nf_instance->sm));
 
+                e->h.sbi.message = &message;
+                ogs_fsm_dispatch(&nf_instance->sm, e);
+                break;
+
+
+                
+            DEFAULT
+            END
         DEFAULT
             ogs_error("Invalid API name [%s]", message.h.service.name);
             ogs_assert_if_reached();
@@ -178,8 +192,6 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
         ogs_sbi_response_free(response);
         break;
 
-    // ! TIMER
-    // ? Usage
     case OGS_EVENT_SBI_TIMER:
         ogs_assert(e);
 

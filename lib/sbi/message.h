@@ -115,6 +115,8 @@ extern "C" {
 #define OGS_SBI_RESOURCE_NAME_UES                   "ues"
 #define OGS_SBI_RESOURCE_NAME_AM_DATA               "am-data"
 
+#define OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION    "determine-location"
+
 #define OGS_SBI_RESOURCE_NAME_SM_CONTEXTS           "sm-contexts"
 #define OGS_SBI_RESOURCE_NAME_MODIFY                "modify"
 #define OGS_SBI_RESOURCE_NAME_RELEASE               "release"
@@ -513,6 +515,8 @@ typedef struct ogs_sbi_message_s {
     OpenAPI_smf_registration_t *SmfRegistration;
 
     ogs_sbi_links_t *links;
+
+    lmf_determine_location_location_data_t *LMFLocationData;
 
 #define OGS_SBI_MAX_NUM_OF_PART 8
     int num_of_part;

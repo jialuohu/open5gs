@@ -30,6 +30,9 @@ extern "C" {
 int lmf_sbi_open(void);
 void lmf_sbi_close(void);
 
+// ! sending response back to AMF
+// bool lmf_sbi_send_request
+
 #ifdef __cplusplus
 }
 #endif

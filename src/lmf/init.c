@@ -13,14 +13,11 @@ int lmf_initialize(void)
     int rv;
 
     ogs_sbi_context_init(OpenAPI_nf_type_LMF);
-    // TODO Need implementation in "context.c".
     lmf_context_init();
 
-    // ? Usage
     rv = ogs_sbi_context_parse_config("lmf", "nrf", "scp");
     if (rv != OGS_OK) return rv;
 
-    // TODO Need implementation in "context.c".
     rv = lmf_context_parse_config();
     if (rv != OGS_OK) return rv;
 
@@ -28,7 +25,6 @@ int lmf_initialize(void)
             ogs_app()->logger.domain, ogs_app()->logger.level);
     if (rv != OGS_OK) return rv;
 
-    // ! Implemented in "sbi-path.c" but have questions.
     rv = lmf_sbi_open();
     if (rv != OGS_OK) return rv;
 
@@ -72,7 +68,6 @@ void lmf_terminate(void)
 
     lmf_sbi_close();
 
-    // TODO Need implementation in "context.c".
     lmf_context_final();
     ogs_sbi_context_final();
 }
@@ -82,7 +77,6 @@ static void lmf_main(void *data)
     ogs_fsm_t lmf_sm;
     int rv;
 
-    // TODO Need implementation in "lmf-sm.c".
     ogs_fsm_init(&lmf_sm, lmf_state_initial, lmf_state_final, 0);
 
     for ( ;; ) {
@@ -103,7 +97,6 @@ static void lmf_main(void *data)
         ogs_timer_mgr_expire(ogs_app()->timer_mgr);
 
         for ( ;; ) {
-            // TODO Need implementation in "event.h".
             lmf_event_t *e = NULL;
 
             rv = ogs_queue_trypop(ogs_app()->queue, (void**)&e);

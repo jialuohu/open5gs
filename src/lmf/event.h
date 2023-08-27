@@ -9,7 +9,8 @@ extern "C" {
 #endif
 
 typedef struct lmf_event_s {
-    // ! Only one member?
+    ogs_pkbuf_t *pkbuf;
+    ogs_timer_t *timer;
     ogs_event_t h;
 } lmf_event_t;
 
