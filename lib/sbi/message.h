@@ -516,7 +516,8 @@ typedef struct ogs_sbi_message_s {
 
     ogs_sbi_links_t *links;
 
-    lmf_determine_location_location_data_t *LMFLocationData;
+    // ! Issue
+    // lmf_determine_location_location_data_t *LMFLocationData;
 
 #define OGS_SBI_MAX_NUM_OF_PART 8
     int num_of_part;
