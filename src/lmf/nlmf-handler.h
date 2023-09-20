@@ -2,6 +2,7 @@
 #define LMF_NLMF_HANDLER_H
 
 #include "context.h"
+#include "sbi-path.h"
 
 #ifdef __cplusplus
 extern "C" {

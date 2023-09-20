@@ -4,6 +4,7 @@
 // TODO Check included .h files.
 #include "ogs-app.h"
 #include "ogs-sbi.h"
+#include "ogs-dbi.h"
 
 #include "lmf-sm.h"
 
@@ -30,7 +31,7 @@ typedef struct lmf_context_s {
 #define number                                              float
 #define integer                                             int
 #define boolean                                             char
-#define string                                              char*
+#define string                                              const char*
 
 typedef string                                              correlation_id_t;
 typedef string                                              supi_t;
@@ -169,6 +170,7 @@ LMF_STRUCT_FORWARD_DECLARATION(lmf_periodic_event_info)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_area_event_info)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_motion_event_info)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_ue_connectivity_state)
+LMF_STRUCT_FORWARD_DECLARATION(lmf_reporting_area)
 // LMF_STRUCT_FORWARD_DECLARATION(lmf_ref_to_binary_data)
 typedef OpenAPI_ref_to_binary_data_t lmf_ref_to_binary_data_t;
 // LMF_STRUCT_FORWARD_DECLARATION(lmf_tnap_id)
@@ -353,7 +355,7 @@ typedef OpenAPI_ncgi_t ncgi_t;
 //     tac_t tac;
 //     nid_t nid;
 // } tai_t;
-typedef OpenAPI_tai_s tai_t;
+typedef OpenAPI_tai_t tai_t;
 
 // typedef struct lmf_geographical_coordinates_s{
 //     number lon;
