@@ -122,6 +122,24 @@ void lmf_state_operational(ogs_fsm_t *s, lmf_event_t *e)
                             &message, "Invalid HTTP method", message.h.method));
                 END
                 break;
+            CASE(OGS_SBI_RESOURCE_NAME_CANCEL_LOCATION)
+                /* Check if the request is POST */
+                SWITCH(message.h.method)
+                CASE(OGS_SBI_HTTP_METHOD_POST)
+                    /* Handler of cancel_location */
+                    lmf_nlmf_loc_handle_cancel_location(
+                        stream, &message);
+                    break;
+
+                DEFAULT
+                    ogs_error("Invalid HTTP method[%s]",
+                            message.h.method);
+                    ogs_assert(true == 
+                        ogs_sbi_server_send_error(stream,
+                            OGS_SBI_HTTP_STATUS_FORBIDDEN,
+                            &message, "Invalid HTTP method", message.h.method));
+                END
+                break;
             DEFAULT
                 ogs_error("Invalid resource name [%s]",
                         message.h.resource.component[0]);

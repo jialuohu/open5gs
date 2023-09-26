@@ -52,9 +52,9 @@ typedef string                                              ldr_reference_t;
 typedef string                                              lir_reference_t;
 typedef string                                              tac_t;
 typedef string                                              access_type_t;
-typedef string                                              lcs_broadcast_assistance_types_data_t;          // ! openapi definition problem
+typedef string                                              lcs_broadcast_assistance_types_data_t;          // ! openapi definition
 typedef string                                              date_time_t;
-typedef string                                              bytes_t;                                        // ! openapi definition problem
+typedef string                                              bytes_t;                                        // ! openapi definition
 
 typedef integer                                             orientation_t;
 typedef integer                                             age_of_location_estimate_t;
@@ -98,9 +98,7 @@ typedef OpenAPI_list_t lmf_list_t;
 LMF_ENUM_FORWARD_DECLARATION(lmf_response_time)
 LMF_ENUM_FORWARD_DECLARATION(lmf_lcs_priority)
 LMF_ENUM_FORWARD_DECLARATION(lmf_velocity_requested)
-// LMF_ENUM_FORWARD_DECLARATION(lmf_external_client_type)
 typedef OpenAPI_external_client_type_t lmf_external_client_type_t;
-// LMF_ENUM_FORWARD_DECLARATION(lmf_supported_gad_shapes)
 typedef OpenAPI_supported_gad_shapes_t lmf_supported_gad_shapes_t;
 LMF_ENUM_FORWARD_DECLARATION(lmf_accuracy_fulfillment_indicator)
 LMF_ENUM_FORWARD_DECLARATION(lmf_vertical_direction)
@@ -112,7 +110,6 @@ LMF_ENUM_FORWARD_DECLARATION(lmf_ldr_type)
 LMF_ENUM_FORWARD_DECLARATION(lmf_reporting_area_type)
 LMF_ENUM_FORWARD_DECLARATION(lmf_occurrence_info)
 LMF_ENUM_FORWARD_DECLARATION(lmf_reporting_access_type)
-// LMF_ENUM_FORWARD_DECLARATION(lmf_cm_state)
 typedef OpenAPI_cm_state_t lmf_cm_state_t;
 LMF_ENUM_FORWARD_DECLARATION(lmf_ue_location_service_ind)
 LMF_ENUM_FORWARD_DECLARATION(lmf_lp_hap_type)
@@ -120,48 +117,30 @@ LMF_ENUM_FORWARD_DECLARATION(lmf_lp_hap_type)
 
 // * struct forward_declaration
 LMF_STRUCT_FORWARD_DECLARATION(lmf_location_qos)
-// LMF_STRUCT_FORWARD_DECLARATION(ecgi)
 typedef OpenAPI_ecgi_t ecgi_t;
 LMF_STRUCT_FORWARD_DECLARATION(lmf_plmn_id)
-// LMF_STRUCT_FORWARD_DECLARATION(ncgi)
 typedef OpenAPI_ncgi_t ncgi_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_geographical_coordinates)
 typedef OpenAPI_geographical_coordinates_t lmf_geographical_coordinates_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_point)
 typedef OpenAPI_point_t lmf_point_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_uncertainty_ellipse)
 typedef OpenAPI_uncertainty_ellipse_t lmf_uncertainty_ellipse_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_uncertainty_ellipsoid)
 typedef OpenAPI_uncertainty_ellipsoid_t lmf_uncertainty_ellipsoid_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_point_uncertainty_ellipse)
 typedef OpenAPI_point_uncertainty_ellipse_t lmf_point_uncertainty_ellipse_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_point_uncertainty_circle)
 typedef OpenAPI_point_uncertainty_circle_t lmf_point_uncertainty_circle_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_polygon)
 typedef OpenAPI_polygon_t lmf_polygon_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_point_altitude)
 typedef OpenAPI_point_altitude_t lmf_point_altitude_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_point_altitude_uncertainty)
 typedef OpenAPI_geographic_area_t lmf_geographic_area_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_ellipsoid_arc)
 typedef OpenAPI_ellipsoid_arc_t lmf_ellipsoid_arc_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_geographic_area)
 typedef OpenAPI_geographic_area_t lmf_geographic_area_t;
 LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_velocity)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_velocity_estimate)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_velocity_with_uncertainty)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_horizontal_with_vertical_velocity_and_uncertainty)
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_civic_address)
 typedef OpenAPI_civic_address_t lmf_civic_address_t;
 LMF_STRUCT_FORWARD_DECLARATION(lmf_positioning_method_and_usage)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_gnss_positioning_method_and_usage)
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_local_origin)
 typedef OpenAPI_local_origin_t lmf_local_origin_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_relative_cartesian_location)
 typedef OpenAPI_relative_cartesian_location_t lmf_relative_cartesian_location_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_local_2d_point_uncertainty_ellipse)
 typedef OpenAPI_local2d_point_uncertainty_ellipse_t lmf_local_2d_point_uncertainty_ellipse_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_local_3d_point_uncertainty_ellipsoid)
 typedef OpenAPI_local3d_point_uncertainty_ellipsoid_t lmf_local_3d_point_uncertainty_ellipsoid_t;
 LMF_STRUCT_FORWARD_DECLARATION(lmf_ue_area_indication)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_minor_location_qos)
@@ -171,13 +150,9 @@ LMF_STRUCT_FORWARD_DECLARATION(lmf_area_event_info)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_motion_event_info)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_ue_connectivity_state)
 LMF_STRUCT_FORWARD_DECLARATION(lmf_reporting_area)
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_ref_to_binary_data)
 typedef OpenAPI_ref_to_binary_data_t lmf_ref_to_binary_data_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_tnap_id)
 typedef OpenAPI_tnap_id_t lmf_tnap_id_t;
-// LMF_STRUCT_FORWARD_DECLARATION(lmf_twap_id)
 typedef OpenAPI_twap_id_t lmf_twap_id_t;
-// LMF_STRUCT_FORWARD_DECLARATION(tai)
 typedef OpenAPI_tai_t tai_t;
 
 
@@ -203,28 +178,9 @@ typedef enum lmf_velocity_requested_e {
 } lmf_velocity_requested_t;
 
 
-// typedef enum lmf_external_client_type_e { 
-//     EMERGENCY_SERVICES, 
-//     VALUE_ADDED_SERVICES, 
-//     PLMN_OPERATOR_SERVICES, 
-//     LAWFUL_INTERCEPT_SERVICES, 
-//     PLMN_OPERATOR_BROADCAST_SERVICES, 
-//     PLMN_OPERATOR_OM, 
-//     PLMN_OPERATOR_ANONYMOUS_STATISTICS, 
-//     PLMN_OPERATOR_TARGET_MS_SERVICE_SUPPORT     
-// } lmf_external_client_type_t;
 typedef OpenAPI_external_client_type_t lmf_external_client_type_t;
 
 
-// typedef enum lmf_supported_gad_shapes_e {
-//     POINT,
-//     POINT_UNCERTAINTY_CIRCLE,
-//     POINT_UNCERTAINTY_ELLIPSE,
-//     POLYGON,
-//     POINT_ALTITUDE,
-//     POINT_ALTITUDE_UNCERTAINTY,
-//     ELLIPSOID_ARC
-// } lmf_supported_gad_shapes_t;
 typedef OpenAPI_supported_gad_shapes_t lmf_supported_gad_shapes_t;
 
 
@@ -302,10 +258,6 @@ typedef enum lmf_reporting_access_type_e {
     NR_OTHER_SAT
 } lmf_reporting_access_type_t;
 
-// typedef enum lmf_cm_state_e {
-//     IDLE,
-//     CONNECTED
-// } lmf_cm_state_t;
 typedef OpenAPI_cm_state_t lmf_cm_state_t;
 
 
@@ -329,124 +281,39 @@ typedef struct lmf_location_qos_s {
 } lmf_location_qos_t;
 
 
-// typedef struct ecgi_s {
-//     lmf_plmn_id_t *plmn_id;
-//     eutra_cell_id_t eutra_cell_id;
-//     nid_t nid;
-// } ecgi_t;
 typedef OpenAPI_ecgi_t ecgi_t;
 
 
-// ! OpenAPI_plmn_id_1_t or OpenAPI_plmn_id_t?
 typedef struct lmf_plmn_id_s {
     mcc_t mcc;
     mnc_t mnc;
 } lmf_plmn_id_t;
 
-// typedef struct ncgi_s {
-//     lmf_plmn_id_t *plmn_id;
-//     nr_cell_id_t nr_cell_id;
-//     nid_t nid;
-// } ncgi_t;
 typedef OpenAPI_ncgi_t ncgi_t;
 
-// typedef struct tai_s {
-//     lmf_plmn_id_t *plmn_id;
-//     tac_t tac;
-//     nid_t nid;
-// } tai_t;
 typedef OpenAPI_tai_t tai_t;
 
-// typedef struct lmf_geographical_coordinates_s{
-//     number lon;
-//     number lat;
-// } lmf_geographical_coordinates_t;
 typedef OpenAPI_geographical_coordinates_t lmf_geographical_coordinates_t;
 
-// typedef struct lmf_point_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-// } lmf_point_t;
 typedef OpenAPI_point_t lmf_point_t;
 
-
-// typedef struct lmf_uncertainty_ellipse_s {
-//     uncertainty_t semi_major;
-//     uncertainty_t semi_minor;
-//     orientation_t orientation_major;
-// } lmf_uncertainty_ellipse_t;
 typedef OpenAPI_uncertainty_ellipse_t lmf_uncertainty_ellipse_t;
 
-// typedef struct lmf_uncertainty_ellipsoid_s {
-//     uncertainty_t semi_major;
-//     uncertainty_t semi_minor;
-//     uncertainty_t vertical;
-//     orientation_t orientation_major;
-// } lmf_uncertainty_ellipsoid_t;
 typedef OpenAPI_uncertainty_ellipsoid_t lmf_uncertainty_ellipsoid_t;
 
-
-// typedef struct lmf_point_uncertainty_ellipse_s{
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-//     lmf_uncertainty_ellipse_t *uncertainty_ellipse;
-//     confidence_t confidence;
-// } lmf_point_uncertainty_ellipse_t;
 typedef OpenAPI_point_uncertainty_ellipse_t lmf_point_uncertainty_ellipse_t;
 
-
-// typedef struct lmf_point_uncertainty_circle_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-//     uncertainty_t uncertainty;
-// } lmf_point_uncertainty_circle_t;
 typedef OpenAPI_point_uncertainty_circle_t lmf_point_uncertainty_circle_t;
 
-// typedef struct lmf_polygon_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point_list[15];                  // TODO confirm with the maximum
-// } lmf_polygon_t;
 typedef OpenAPI_polygon_t lmf_polygon_t;
 
 
-// typedef struct lmf_point_altitude_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-//     altitude_t altitude;
-// } lmf_point_altitude_t;
 typedef OpenAPI_point_altitude_t lmf_point_altitude_t;
 
-// typedef struct lmf_point_altitude_uncertainty_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-//     altitude_t altitude;
-//     lmf_uncertainty_ellipse_t *uncertainty_ellipse;
-//     uncertainty_t uncertainty;
-//     confidence_t  confidence;
-// } lmf_point_altitude_uncertainty_t;
 typedef OpenAPI_point_altitude_uncertainty_t lmf_point_altitude_uncertainty_t;
 
-// typedef struct lmf_ellipsoid_arc_s {
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_geographical_coordinates_t *point;
-//     inner_radius_t inner_radius;
-//     uncertainty_t uncertainty_radius;
-//     angle_t offset_angle;
-//     angle_t included_angle;
-//     confidence_t confidence;
-// } lmf_ellipsoid_arc_t;
 typedef OpenAPI_ellipsoid_arc_t lmf_ellipsoid_arc_t;
 
-
-// typedef struct lmf_geographic_area_s {
-//     lmf_point_t *point;
-//     lmf_point_uncertainty_ellipse_t *point_uncertainty_ellipse;
-//     lmf_point_uncertainty_circle_t *point_uncertainty_circle;
-//     lmf_polygon_t *polygon;
-//     lmf_point_altitude_t *point_altitude;
-//     lmf_point_altitude_uncertainty_t *point_altitude_uncertainty;
-//     lmf_ellipsoid_arc_t *ellipsoid_arc;
-// } lmf_geographic_area_t;
 typedef OpenAPI_geographic_area_t lmf_geographic_area_t;
 
 typedef struct lmf_horizontal_velocity_s {
@@ -483,60 +350,11 @@ typedef struct lmf_velocity_estimate_s {
     lmf_horizontal_with_vertical_velocity_and_uncertainty_t *horizontal_with_vertical_velocity_and_uncertainty;
 } lmf_velocity_estimate_t;
 
-// typedef struct lmf_civic_address_s {
-//     string country;
-//     string A1;
-//     string A2;
-//     string A3;
-//     string A4;
-//     string A5;
-//     string A6;
-//     string PRD;
-//     string POD;
-//     string STS;
-//     string HNO;
-//     string HNS;
-//     string LMK;
-//     string LOC;
-//     string NAM;
-//     string PC;
-//     string BLD;
-//     string UNIT;
-//     string ROOM;
-//     string PLC;
-//     string PCN;
-//     string POBOX;
-//     string ADDCODE;
-//     string SEAT;
-//     string RD;
-//     string RDSEC;
-//     string RDBR;
-//     string RDSUBBR;
-//     string PRM;
-//     string POM;
-// } lmf_civic_address_t;
 typedef OpenAPI_civic_address_t lmf_civic_address_t;
 
-// typedef struct lmf_local_2d_point_uncertainty_ellipse_s{
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_local_origin_t *local_origin;
-//     lmf_relative_cartesian_location_t *point;
-//     lmf_uncertainty_ellipse_t *uncertainty_ellipse;
-//     confidence_t confidence;
-// } lmf_local_2d_point_uncertainty_ellipse_t;
 typedef OpenAPI_local2d_point_uncertainty_ellipse_t lmf_local_2d_point_uncertainty_ellipse_t;
 
-
-
-// typedef struct lmf_local_3d_point_uncertainty_ellipsoid_s{
-//     lmf_supported_gad_shapes_t shape;
-//     lmf_local_origin_t *local_origin;
-//     lmf_relative_cartesian_location_t *point;
-//     lmf_uncertainty_ellipsoid_t *uncertainty_ellipsoid;
-//     confidence_t confidence;
-// } lmf_local_3d_point_uncertainty_ellipsoid_t;
 typedef OpenAPI_local3d_point_uncertainty_ellipsoid_t lmf_local_3d_point_uncertainty_ellipsoid_t;
-
 
 typedef union lmf_local_area_u{
     lmf_local_2d_point_uncertainty_ellipse_t *local_2d_point;
@@ -559,18 +377,8 @@ typedef struct lmf_gnss_positioning_method_and_usage_s {
 } lmf_gnss_positioning_method_and_usage_t;
 
 
-// typedef struct lmf_local_origin_s{
-//     string coordinate_id;
-//     lmf_geographical_coordinates_t *point;
-// } lmf_local_origin_t;
 typedef OpenAPI_local_origin_t lmf_local_origin_t;
 
-
-// typedef struct lmf_relative_cartesian_location_s{
-//     float x;
-//     float y;
-//     float z;
-// } lmf_relative_cartesian_location_t;
 typedef OpenAPI_relative_cartesian_location_t lmf_relative_cartesian_location_t;
 
 
@@ -637,29 +445,14 @@ typedef struct lmf_ue_connectivity_state_s {
 } lmf_ue_connectivity_state_t;
 
 
-// typedef struct lmf_ref_to_binary_data_s{
-//     string content_id;
-// } lmf_ref_to_binary_data_t;
 typedef OpenAPI_ref_to_binary_data_t lmf_ref_to_binary_data_t;
 
-// typedef struct lmf_tnap_id_s {
-//     string ss_id;
-//     string bss_id;
-//     bytes_t civic_address;
-// } lmf_tnap_id_t;
 typedef OpenAPI_tnap_id_t lmf_tnap_id_t;
 
-// typedef struct lmf_twap_id_s {
-//     string ss_id;
-//     string bss_id;
-//     bytes_t civic_address;
-// } lmf_twap_id_t;
 typedef OpenAPI_twap_id_t lmf_twap_id_t;
 
 // Determine Location Input Data Structure
 typedef struct lmf_determine_location_input_data_s {
-    // ! How about OpenAPI_external_client_type_t
-    // OpenAPI_external_client_type_any_of_e external_client_type;
     lmf_external_client_type_t external_client_type;
     correlation_id_t correlation_id;
     nf_instance_id amf_id;

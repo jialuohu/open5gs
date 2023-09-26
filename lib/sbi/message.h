@@ -116,6 +116,7 @@ extern "C" {
 #define OGS_SBI_RESOURCE_NAME_AM_DATA               "am-data"
 
 #define OGS_SBI_RESOURCE_NAME_DETERMINE_LOCATION    "determine-location"
+#define OGS_SBI_RESOURCE_NAME_CANCEL_LOCATION       "cancel-location"
 
 #define OGS_SBI_RESOURCE_NAME_SM_CONTEXTS           "sm-contexts"
 #define OGS_SBI_RESOURCE_NAME_MODIFY                "modify"

@@ -1,4 +1,3 @@
-// TODO Implement event handler
 #include "nlmf-handler.h"
 
 bool lmf_nlmf_loc_handle_determine_location(
@@ -154,4 +153,23 @@ bool lmf_nlmf_loc_handle_determine_location(
     return true;
 }
 
+
+bool lmf_nlmf_loc_handle_cancel_location(
+    ogs_sbi_stream_t *stream, ogs_sbi_message_t *recvmsg)
+{
+    ogs_assert(stream);
+    ogs_assert(recvmsg);
+
+
+    ogs_sbi_message_t sendmsg;
+    // ogs_sbi_response_t *response = NULL;
+    ogs_sbi_server_t *server = ogs_sbi_server_from_stream(stream);
+    ogs_sbi_header_t header = recvmsg->h;
+
+    ogs_sbi_response_t *response = ogs_sbi_build_response(&sendmsg, OGS_SBI_HTTP_STATUS_NO_CONTENT); // Replace with your own status
+    ogs_assert(response);
+    ogs_sbi_server_send_response(stream, response);
+
+    return true;
+}
 
