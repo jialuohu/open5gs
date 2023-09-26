@@ -83,6 +83,13 @@
 #include "model/patch_item.h"
 #include "model/ue_authentication_ctx.h"
 
+#include "model/cm_state.h"
+#include "model/local2d_point_uncertainty_ellipse.h"
+#include "model/local3d_point_uncertainty_ellipsoid.h"
+#include "model/relative_cartesian_location.h"
+#include "model/local_origin.h"
+#include "model/uncertainty_ellipsoid.h"
+
 #include "custom/links.h"
 
 #if defined(__GNUC__)

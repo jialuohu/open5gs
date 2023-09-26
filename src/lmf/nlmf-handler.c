@@ -106,18 +106,9 @@ bool lmf_nlmf_loc_handle_determine_location(
     responseData->altitude = 32767;
 
     // Initialize 'localLocationEstimate'
-    /*
-    OpenAPI_supported_gad_shapes_t *shape,
-    OpenAPI_local_origin_t *local_origin,
-    OpenAPI_relative_cartesian_location_t *point,
-    OpenAPI_uncertainty_ellipse_t *uncertainty_ellipse,
-    int confidence
-    */
-
-
     lmf_local_2d_point_uncertainty_ellipse_t *temp_local_2d_point = OpenAPI_local2d_point_uncertainty_ellipse_create(
         OpenAPI_supported_gad_shapes_create(),
-        OpenAPI_local_origin_create("string",OpenAPI_geographical_coordinates_create(180,90)),
+        OpenAPI_local_origin_create((char *)"string",OpenAPI_geographical_coordinates_create(180,90)),
         OpenAPI_relative_cartesian_location_create(0,0,false,0),
         OpenAPI_uncertainty_ellipse_create(0,0,180),
         100
